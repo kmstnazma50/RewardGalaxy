@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Premium Offer Vault | 30 Exclusive Deals</title>
+  <meta name="description" content="Claim your exclusive offers from our premium deal vault. 30 live deals across 10 tiers. Click and collect your rewards instantly.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(circle at 20% 30%, #0a1f0a, #0a0c1a, #02040f);
+      font-family: 'Inter', system-ui, sans-serif;
+      padding: 2rem 1.5rem;
+      min-height: 100vh;
+    }
+
+    .main-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .content-area {
+      flex: 3;
+      min-width: 250px;
+    }
+
+    /* desktop sidebar - vibrant theme with green undertone */
+    .level-sidebar {
+      flex: 0.9;
+      min-width: 200px;
+      position: sticky;
+      top: 2rem;
+      align-self: flex-start;
+      background: rgba(20, 25, 35, 0.85);
+      backdrop-filter: blur(16px);
+      border-radius: 2rem;
+      padding: 1.5rem 1rem;
+      border: 1px solid rgba(251, 146, 60, 0.5);
+      height: fit-content;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .level-sidebar h3 {
+      color: #ffd6a5;
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .level-sidebar h3 i {
+      color: #4ade80;
+    }
+
+    .triggers-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .level-btn {
+      background: linear-gradient(105deg, #1a1e32, #11152a);
+      border: 1px solid #fb923c;
+      border-radius: 60px;
+      padding: 8px 0;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: #ffdead;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .level-btn i {
+      font-size: 0.75rem;
+      color: #4ade80;
+    }
+
+    .level-btn:hover {
+      background: linear-gradient(105deg, #2a2f4a, #1a1f38);
+      border-color: #f97316;
+      transform: translateY(-2px);
+    }
+
+    .level-btn.active {
+      background: linear-gradient(105deg, #ea580c, #c2410c);
+      border-color: #fdba74;
+      color: white;
+    }
+
+    .level-btn.active i {
+      color: #fef3c7;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fb923c, #f97316, #4ade80, #fdba74);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .hero h1 i {
+      background: none;
+      -webkit-text-fill-color: #f97316;
+      font-size: 2rem;
+    }
+
+    .hero p {
+      color: #86efac;
+      margin-top: 12px;
+      font-size: 1rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .stats-card {
+      background: rgba(10, 14, 30, 0.7);
+      backdrop-filter: blur(12px);
+      border-radius: 2rem;
+      padding: 1rem 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 2rem;
+      margin-bottom: 0;
+      border: 1px solid rgba(74, 222, 128, 0.4);
+    }
+
+    .total-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fcd9b6;
+      font-weight: 600;
+    }
+
+    .total-box i {
+      font-size: 2rem;
+      color: #4ade80;
+    }
+
+    .total-number {
+      background: #0a0e20;
+      padding: 6px 20px;
+      border-radius: 50px;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fbbf24;
+      font-family: monospace;
+      letter-spacing: 2px;
+      border: 1px solid #4ade80;
+    }
+
+    .legend {
+      display: flex;
+      gap: 20px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #2d3a5e;
+    }
+
+    .dot.active {
+      background: #10b981;
+      box-shadow: 0 0 6px #34d399;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 1.5rem 0 1rem 0;
+      padding-bottom: 6px;
+      border-bottom: 2px solid rgba(251, 146, 60, 0.5);
+    }
+
+    .section-title i {
+      font-size: 1.5rem;
+      color: #4ade80;
+    }
+
+    .section-title h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fee3c0;
+    }
+
+    .badge {
+      background: #f97316;
+      padding: 2px 12px;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #0a0a1a;
+    }
+
+    .btn-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      max-height: 50vh;
+      overflow-y: auto;
+      padding-right: 8px;
+    }
+
+    .btn-grid::-webkit-scrollbar {
+      width: 6px;
+    }
+    .btn-grid::-webkit-scrollbar-track {
+      background: #1e253e;
+      border-radius: 10px;
+    }
+    .btn-grid::-webkit-scrollbar-thumb {
+      background: #4ade80;
+      border-radius: 10px;
+    }
+
+    .offer-btn {
+      background: linear-gradient(105deg, #13182e, #0c1022);
+      border: 1px solid #3b3f66;
+      border-radius: 60px;
+      padding: 12px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      color: #e2e8f0;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .offer-btn:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(105deg, #1c2340, #12172e);
+      border-color: #4ade80;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.4);
+    }
+
+    .btn-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      overflow: hidden;
+    }
+    .btn-left i {
+      font-size: 1.2rem;
+      color: #f97316;
+      min-width: 28px;
+      text-align: center;
+    }
+    .btn-left span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .click-count {
+      background: #00000055;
+      border-radius: 40px;
+      padding: 3px 12px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #4ade80;
+      border: 0.5px solid #4ade80;
+      font-family: monospace;
+    }
+    .offer-btn.clicked {
+      background: linear-gradient(105deg, #0f3b2a, #0a261c);
+      border-color: #10b981;
+    }
+    .offer-btn.clicked .click-count {
+      background: #064e3b;
+      color: #facc15;
+    }
+
+    .reset-btn {
+      background: rgba(249, 115, 22, 0.15);
+      border: 1px solid #f97316;
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #fdba74;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .reset-btn:hover {
+      background: #f9731630;
+      color: #ffffff;
+      border-color: #4ade80;
+    }
+
+    footer {
+      margin-top: 1.5rem;
+      text-align: center;
+      color: #6b9e6b;
+      font-size: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    @media (max-width: 850px) {
+      .main-container { flex-direction: column; }
+      .level-sidebar { display: none; }
+      .mobile-tier-bar {
+        display: block;
+        background: rgba(20, 25, 35, 0.85);
+        backdrop-filter: blur(16px);
+        border-radius: 1.5rem;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(251, 146, 60, 0.5);
+      }
+      .mobile-tier-bar h3 {
+        color: #ffd6a5;
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .mobile-triggers {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+      }
+      .mobile-tier-btn {
+        background: linear-gradient(105deg, #1a1e32, #11152a);
+        border: 1px solid #fb923c;
+        border-radius: 60px;
+        padding: 6px 0;
+        font-weight: 700;
+        font-size: 0.65rem;
+        color: #ffdead;
+        cursor: pointer;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+      }
+      .mobile-tier-btn i { font-size: 0.65rem; color: #4ade80; }
+      .mobile-tier-btn.active {
+        background: linear-gradient(105deg, #ea580c, #c2410c);
+        border-color: #fdba74;
+        color: white;
+      }
+      .btn-grid { max-height: 45vh; }
+      .stats-card { margin-top: 1.5rem; }
+    }
+    @media (min-width: 851px) {
+      .mobile-tier-bar { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="main-container">
+  <div class="content-area">
+    <div class="hero">
+      <h1><i class="fas fa-crown"></i> PREMIUM OFFER VAULT <i class="fas fa-gem"></i></h1>
+      <p>Unlock exclusive rewards from our verified collection. Each tier contains hand-picked premium offers ready for you.</p>
+    </div>
+
+    <div class="mobile-tier-bar" id="mobileTierBar">
+      <h3><i class="fas fa-layer-group"></i> Select Your Tier</h3>
+      <div class="mobile-triggers" id="mobileTriggers"></div>
+    </div>
+
+    <div class="section-title" id="dynamicSectionTitle">
+      <i class="fas fa-chart-simple"></i>
+      <h2 id="levelName">Tier 1 · Starter Pack</h2>
+      <div class="badge" id="levelBadge">3 Offers</div>
+    </div>
+    <div id="offersGrid" class="btn-grid"></div>
+
+    <div class="stats-card">
+      <div class="total-box">
+        <i class="fas fa-chart-line"></i>
+        <span>Total Clicks</span>
+        <div class="total-number" id="totalClicks">0</div>
+      </div>
+      <div class="legend">
+        <span><i class="dot"></i> Pending</span>
+        <span><i class="dot active"></i> Claimed</span>
+      </div>
+    </div>
+
+    <footer>
+      <span><i class="far fa-clock"></i> 30 Verified Offers · 10 Exclusive Tiers · Instant Access</span>
+      <div class="reset-btn" id="resetAllBtn"><i class="fas fa-trash-alt"></i> Reset Counters</div>
+    </footer>
+  </div>
+
+  <div class="level-sidebar">
+    <h3><i class="fas fa-layer-group"></i> Select Your Tier</h3>
+    <div class="triggers-grid" id="desktopTriggers"></div>
+  </div>
+</div>
+
+<script>
+  // 30 LINKS (as provided)
+  const ALL_LINKS = [
+    "https://staturenonsense.com/k9iwnh0na?key=40d5b7be4068d556d11b2d4cf659884f",
+    "https://staturenonsense.com/v3hrrz7tu?key=e4a1b1d7db4137ab2e4672d4e28c5d45",
+    "https://staturenonsense.com/d5n4v097e?key=98f239308541a08267d539e0879e1bdb",
+    "https://staturenonsense.com/gi8srbimv4?key=c8aa1e0bc64a086ec3259966d03ab64e",
+    "https://staturenonsense.com/q3grm9zeh8?key=56b2f1ea6c8c89ca6d2e1f3caea96d36",
+    "https://staturenonsense.com/pm0qetbipn?key=05b4ade65561e9d4bb7843640845c354",
+    "https://staturenonsense.com/bzccv95g?key=dec21182bcf49dbb302557fb8e51f1e1",
+    "https://staturenonsense.com/tcheifnd?key=2d885daa739aacec23eab6b592060912",
+    "https://staturenonsense.com/m3ck7i9ch?key=bc65d8aaa17ffe6788cb4ddf0f6378a8",
+    "https://staturenonsense.com/i54rb5mkf?key=93f8f4e637ab67140c69a15d58137728",
+    "https://staturenonsense.com/zf4cqbcvx?key=79edf58f1053b46a92a2e27bbdb3527d",
+    "https://staturenonsense.com/zumtr5nhhr?key=0bdcdca7143719e6909089343223d749",
+    "https://staturenonsense.com/y5cnm8qp?key=547f8e8ced00995da056e129a8ac7834",
+    "https://staturenonsense.com/zrsjxtpi?key=b3c00ee91dcac1677ef62e35e820df33",
+    "https://staturenonsense.com/jsf32cf7?key=38b4e89a7b77b2cda7fa058721c8216e",
+    "https://staturenonsense.com/empyj8hra?key=0b0b16a7e708abdcadf031f2c0f3e670",
+    "https://staturenonsense.com/feuk8zg12p?key=64fc9980aa195c3c55be4d6de3813b05",
+    "https://staturenonsense.com/fgmix34m?key=77b0ad9e092de0f134e2929fd9663eb4",
+    "https://staturenonsense.com/tx5pcr0xa?key=28fa700cd2ca31dfce201040a2c6882a",
+    "https://staturenonsense.com/x9b8d7rzu6?key=3f2247c4a7754f021ff04c1c163c0d06",
+    "https://staturenonsense.com/w7qjtmt58?key=cae269d6806690fb65f6e283cef84ccf",
+    "https://staturenonsense.com/ht52z207k?key=7306cff5685f7a4b298fedcc8fe1ffdd",
+    "https://staturenonsense.com/f6w75y3e?key=d75684fab24ec09cc2e5704fc6160bae",
+    "https://staturenonsense.com/bb1u2qq4n?key=c1f1b08eb22ea913b44d21ecdab73e34",
+    "https://staturenonsense.com/tf86va7h3?key=e61d8a7f5979c9c80b3d833957336a45",
+    "https://staturenonsense.com/zhf25wgs?key=039e8681615a931948e38551383d0a79",
+    "https://staturenonsense.com/aq5u31wwu?key=5b40c215192702c9f1829b9eb9781f4d",
+    "https://staturenonsense.com/vvuhxctnfx?key=e64260467bd34462391b690bfe8f729a",
+    "https://staturenonsense.com/vfrw9p99h?key=9b74e58fb3e87f078609ef62d13fb5d0",
+    "https://staturenonsense.com/g3qceb1f?key=8ee5fd441ea03b8637b13e6be3684ff4"
+  ];
+
+  // Professional offer names
+  const OFFER_NAMES = [
+    "Premium Access", "Elite Reward", "Gold Member", "Platinum Deal", "Diamond Pack",
+    "Exclusive Drop", "Limited Edition", "Founders Pack", "Early Bonus", "Weekend Special",
+    "Flash Reward", "Midnight Deal", "Sunrise Pack", "Twilight Offer", "Summit Bundle",
+    "Horizon Pack", "Legacy Deal", "Infinity Access", "Prime Selection", "Ultimate Vault",
+    "Signature Pack", "Collector's Edition", "Master Tier", "Legendary Chest", "Mythic Bundle",
+    "Rare Discovery", "Instant Reward", "Quick Claim", "Direct Access", "Verified Deal"
+  ];
+
+  const OFFER_ICONS = [
+    "crown", "gem", "star", "medal", "trophy",
+    "gift", "box", "bag-shopping", "wallet", "coins",
+    "bolt", "fire", "rocket", "cloud-sun", "moon",
+    "compass", "map", "key", "lock", "shield",
+    "circle-check", "badge-check", "hand-peace", "thumbs-up", "award",
+    "diamond", "ring", "clock", "calendar", "bell"
+  ];
+
+  function getOfferName(idx) {
+    return OFFER_NAMES[idx % OFFER_NAMES.length];
+  }
+  function getOfferIcon(idx) {
+    return OFFER_ICONS[idx % OFFER_ICONS.length];
+  }
+
+  // 10 tiers, each with 3 offers
+  const TIER_OFFERS = {};
+  for (let i = 0; i < 10; i++) {
+    TIER_OFFERS[i+1] = [];
+    for (let j = 0; j < 3; j++) {
+      const linkIdx = i * 3 + j;
+      TIER_OFFERS[i+1].push({
+        name: getOfferName(linkIdx),
+        icon: getOfferIcon(linkIdx),
+        link: ALL_LINKS[linkIdx]
+      });
+    }
+  }
+
+  const TOTAL_OFFERS = 30;
+  let clickCounts = new Array(TOTAL_OFFERS).fill(0);
+  const STORAGE_KEY = "premiumOfferVaultV1";
+
+  function getGlobalIndex(tier, localIdx) {
+    return (tier-1) * 3 + localIdx;
+  }
+
+  function loadCounts() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      try {
+        let arr = JSON.parse(saved);
+        if (arr.length === TOTAL_OFFERS) clickCounts = arr;
+      } catch(e) {}
+    }
+  }
+  function saveCounts() { localStorage.setItem(STORAGE_KEY, JSON.stringify(clickCounts)); }
+  function updateTotalDisplay() {
+    const total = clickCounts.reduce((a,b)=>a+b,0);
+    document.getElementById("totalClicks").innerText = total;
+  }
+
+  let currentTier = 1;
+
+  function renderCurrentTier() {
+    const grid = document.getElementById("offersGrid");
+    grid.innerHTML = "";
+    const offers = TIER_OFFERS[currentTier];
+    const levelTitle = document.getElementById("levelName");
+    const levelBadge = document.getElementById("levelBadge");
+    const tierNames = ["Starter Pack", "Bronze Tier", "Silver Tier", "Gold Tier", "Platinum Tier", "Emerald Tier", "Ruby Tier", "Sapphire Tier", "Diamond Tier", "Ultimate Vault"];
+    levelTitle.innerText = `Tier ${currentTier} · ${tierNames[currentTier-1]}`;
+    levelBadge.innerText = "3 Offers";
+
+    offers.forEach((offer, localIdx) => {
+      const globalIdx = getGlobalIndex(currentTier, localIdx);
+      const count = clickCounts[globalIdx];
+      const isClicked = count > 0;
+      const btn = document.createElement("a");
+      btn.href = offer.link;
+      btn.target = "_blank";
+      btn.rel = "noopener noreferrer";
+      btn.className = "offer-btn" + (isClicked ? " clicked" : "");
+      btn.innerHTML = `<div class="btn-left"><i class="fas fa-${offer.icon}"></i><span>${offer.name}</span></div><div class="click-count">${count}</div>`;
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        clickCounts[globalIdx] += 1;
+        saveCounts();
+        updateTotalDisplay();
+        renderCurrentTier();
+      });
+      grid.appendChild(btn);
+    });
+  }
+
+  function setActiveTier(tier) {
+    currentTier = tier;
+    document.querySelectorAll(".level-btn").forEach(btn => {
+      if (parseInt(btn.getAttribute("data-level")) === tier) btn.classList.add("active");
+      else btn.classList.remove("active");
+    });
+    document.querySelectorAll(".mobile-tier-btn").forEach(btn => {
+      if (parseInt(btn.getAttribute("data-level")) === tier) btn.classList.add("active");
+      else btn.classList.remove("active");
+    });
+    renderCurrentTier();
+  }
+
+  function resetCounters() {
+    for (let i=0; i<TOTAL_OFFERS; i++) clickCounts[i]=0;
+    saveCounts();
+    updateTotalDisplay();
+    renderCurrentTier();
+  }
+
+  function buildTriggers() {
+    const desktopContainer = document.getElementById("desktopTriggers");
+    const mobileContainer = document.getElementById("mobileTriggers");
+    desktopContainer.innerHTML = "";
+    mobileContainer.innerHTML = "";
+    for (let i=1; i<=10; i++) {
+      const dBtn = document.createElement("div");
+      dBtn.className = "level-btn";
+      dBtn.setAttribute("data-level", i);
+      dBtn.innerHTML = `<i class="fas fa-tag"></i> ${i}`;
+      dBtn.addEventListener("click", () => setActiveTier(i));
+      desktopContainer.appendChild(dBtn);
+      const mBtn = document.createElement("div");
+      mBtn.className = "mobile-tier-btn";
+      mBtn.setAttribute("data-level", i);
+      mBtn.innerHTML = `<i class="fas fa-tag"></i> ${i}`;
+      mBtn.addEventListener("click", () => setActiveTier(i));
+      mobileContainer.appendChild(mBtn);
+    }
+  }
+
+  document.getElementById("resetAllBtn").addEventListener("click", resetCounters);
+  loadCounts();
+  buildTriggers();
+  setActiveTier(1);
+  updateTotalDisplay();
+</script>
+</body>
+</html>
